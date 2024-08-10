@@ -1,0 +1,18 @@
+name: Trigger Jenkins Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-jenkins:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger Jenkins
+      uses: appleboy/jenkins-action@v1.2.0
+      with:
+        url: "http://your-jenkins-server/job/your-job-name/buildWithParameters"
+        user: ${{ secrets.JENKINS_USER }}
+        token: ${{ secrets.JENKINS_API_TOKEN }}
+        parameters: "YOUR_PARAM=your_value"
