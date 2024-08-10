@@ -12,7 +12,7 @@ jobs:
     - name: Trigger Jenkins
       uses: appleboy/jenkins-action@v1.2.0
       with:
-        url: "http://your-jenkins-server/job/your-job-name/buildWithParameters"
-        user: ${{ secrets.JENKINS_USER }}
-        token: ${{ secrets.JENKINS_API_TOKEN }}
-        parameters: "YOUR_PARAM=your_value"
+        url: "http://192.168.100.196:8080/job/EndCourseProject/"
+        user: ${{ secrets.JUSER }}
+        token: ${{ secrets.UTOKEN }}
+
