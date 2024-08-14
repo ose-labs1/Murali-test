@@ -41,16 +41,37 @@
 
 
 
-name: Trigger Jenkins Pipeline
+# name: Trigger Jenkins Pipeline
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   trigger-jenkins:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Trigger Jenkins
+#       run: curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" --user ${{ secrets.JUSER }}:${{ secrets.UTOKEN }}
+
+
+name: Trigger Jenkins Job
 
 on:
   push:
     branches:
-      - main
+      - main  # Change this to the branch you want to trigger the action on
 
 jobs:
   trigger-jenkins:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Trigger Jenkins
-      run: curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" --user ${{ secrets.JUSER }}:${{ secrets.UTOKEN }}
+    - name: Trigger Jenkins Job
+      run: |
+        curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" \
+          --user "${{ secrets.JUSER }}:${{ secrets.UTOKEN }}" \
+          --data-urlencode "BRANCH=main" \
+          --data-urlencode "DEPLOY_ENV=staging" \
+          --data-urlencode "RUN_TESTS=true"
