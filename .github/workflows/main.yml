@@ -3,7 +3,7 @@ on: push
 
 env:
   JENKINS_HOSTS: http://139.162.253.204:8080/ ## jenkins base url
-  JENKINS_JOBS: job/EndCourseProject ## builds the HelloWorld job inside testJobs
+  #JENKINS_JOBS:  ## builds the HelloWorld job inside testJobs
   JENKINS_PARAM: no
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
           JENKINS_USER: ${{ secrets.JUSER }}
           JENKINS_TOKEN: ${{ secrets.UTOKEN }}
           JENKINS_HOST: ${{ env.JENKINS_HOSTS }}
-          JENKINS_JOB: ${{ env.JENKINS_JOBS }}
+          JENKINS_JOB: job/EndCourseProject
           JENKINS_PARAMS: ${{ env.JENKINS_PARAM }}
 # on:
 #   push:
