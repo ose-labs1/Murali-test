@@ -12,7 +12,7 @@ jobs:
     - name: Trigger Jenkins
       uses: appleboy/jenkins-action@v1.2.0
       with:
-        url: "http://192.168.100.196:8080/job/EndCourseProject/"
+        url: "http://139.162.253.204:8080/job/EndCourseProject/"
         user: ${{ secrets.JUSER }}
         token: ${{ secrets.UTOKEN }}
 
