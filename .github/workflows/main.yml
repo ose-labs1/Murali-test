@@ -1,18 +1,37 @@
-name: Trigger Jenkins Pipeline
+# name: Trigger Jenkins Pipeline
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   trigger-jenkins:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Trigger Jenkins
+#       uses: appleboy/jenkins-action@v1.2.0
+#       with:
+#         url: "http://139.162.253.204:8080//"
+#         user: ${{ secrets.JUSER }}
+#         token: ${{ secrets.UTOKEN }}
+
+
+
+on: push
+
+env:
+  JENKINS_HOST: http://139.162.253.204:8080/ ## jenkins base url
+  JENKINS_JOB: job/EndCourseProject ## builds the HelloWorld job inside testJobs
+  JENKINS_PARAMS: no
 
 jobs:
-  trigger-jenkins:
+  launch_jenkins_job:
+    name: trigger jenkins job
     runs-on: ubuntu-latest
     steps:
-    - name: Trigger Jenkins
-      uses: appleboy/jenkins-action@v1.2.0
-      with:
-        url: "http://139.162.253.204:8080/job/EndCourseProject/"
-        user: ${{ secrets.JUSER }}
-        token: ${{ secrets.UTOKEN }}
-
+      - name: Trigger Jenkins Job
+        uses: sbitio/trigger-jenkins-job@master
+        with:
+          user: ${{ secrets.JUSER }}
+          token: ${{ secrets.UTOKEN }}
