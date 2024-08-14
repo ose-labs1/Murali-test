@@ -2,9 +2,9 @@ name: Trigger Jenkins Pipeline
 on: push
 
 env:
-  JENKINS_HOST: http://139.162.253.204:8080/ ## jenkins base url
-  JENKINS_JOB: job/EndCourseProject ## builds the HelloWorld job inside testJobs
-  JENKINS_PARAMS: no
+  JENKINS_HOSTS: http://139.162.253.204:8080/ ## jenkins base url
+  JENKINS_JOBS: job/EndCourseProject ## builds the HelloWorld job inside testJobs
+  JENKINS_PARAM: no
 
 jobs:
   launch_jenkins_job:
@@ -17,9 +17,9 @@ jobs:
         with:
           JENKINS_USER: ${{ secrets.JUSER }}
           JENKINS_TOKEN: ${{ secrets.UTOKEN }}
-          JENKINS_HOST: ${{ env.JENKINS_HOST }}
-          JENKINS_JOB: ${{ env.JENKINS_JOB }}
-          JENKINS_PARAMS: ${{ env.JENKINS_PARAMS }}
+          JENKINS_HOST: ${{ env.JENKINS_HOSTS }}
+          JENKINS_JOB: ${{ env.JENKINS_JOBS }}
+          JENKINS_PARAMS: ${{ env.JENKINS_PARAM }}
 # on:
 #   push:
 #     branches:
