@@ -1,21 +1,37 @@
 name: Trigger Jenkins Pipeline
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   trigger-jenkins:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Trigger Jenkins
+#       uses: appleboy/jenkins-action@master
+#       with:
+#         url: "http://139.162.253.204:8080/"
+#         user: ${{ secrets.JUSER }}
+#         token: ${{ secrets.UTOKEN }}
+#         job: "EndCourseProject"
+
+on: push
 
 jobs:
-  trigger-jenkins:
+  launch_jenkins_job:
+    name: trigger jenkins job
     runs-on: ubuntu-latest
     steps:
-    - name: Trigger Jenkins
-      uses: appleboy/jenkins-action@master
-      with:
-        url: "http://139.162.253.204:8080/"
-        user: ${{ secrets.JUSER }}
-        token: ${{ secrets.UTOKEN }}
-        job: "EndCourseProject"
+      -
+        name: Trigger Jenkins Job
+        uses: sbitio/trigger-jenkins-job@master
+        with:
+          JENKINS_USER: ${{ secrets.JUSER }}
+          JENKINS_TOKEN: ${{ secrets.UTOKEN }}
+          JENKINS_HOST: "http://139.162.253.204:8080"
+          JENKINS_JOB: job/EndCourseProject/build
 
 
 # on: push
