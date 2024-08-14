@@ -18,23 +18,40 @@
 
 
 
-on: push
+# on: push
 
-env:
-  JENKINS_HOST: http://139.162.253.204:8080 ## jenkins base url
-  JENKINS_JOB: job/EndCourseProject ## builds the HelloWorld job inside testJobs
-  JENKINS_PARAMS: no
+# env:
+#   JENKINS_HOST: http://139.162.253.204:8080 ## jenkins base url
+#   JENKINS_JOB: job/EndCourseProject ## builds the HelloWorld job inside testJobs
+#   JENKINS_PARAMS: no
+
+# jobs:
+#   launch_jenkins_job:
+#     name: trigger jenkins job
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Trigger Jenkins Job
+#         uses: sbitio/trigger-jenkins-job@master
+#         with:
+#           JENKINS_USER: ${{ secrets.JUSER }}
+#           JENKINS_TOKEN: ${{ secrets.UTOKEN }}
+#           JENKINS_HOST: ${{ env.JENKINS_HOST }}
+#           JENKINS_JOB: ${{ env.JENKINS_JOB }}
+#           JENKINS_PARAMS: ${{ env.JENKINS_PARAMS }}
+
+
+
+name: Trigger Jenkins Pipeline
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  launch_jenkins_job:
-    name: trigger jenkins job
+  trigger-jenkins:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Jenkins Job
-        uses: sbitio/trigger-jenkins-job@master
-        with:
-          JENKINS_USER: ${{ secrets.JUSER }}
-          JENKINS_TOKEN: ${{ secrets.UTOKEN }}
-          JENKINS_HOST: ${{ env.JENKINS_HOST }}
-          JENKINS_JOB: ${{ env.JENKINS_JOB }}
-          JENKINS_PARAMS: ${{ env.JENKINS_PARAMS }}
+    - name: Trigger Jenkins
+      run: curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" \
+          --user ${{ secrets.JUSER }}:${{ secrets.UTOKEN }}
