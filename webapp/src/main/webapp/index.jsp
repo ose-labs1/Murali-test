@@ -31,7 +31,7 @@
     <!-- Header Section -->
     <div class="jumbotron text-center">
         <h1 class="display-4"> Welcome to my End Course Project, where my World of Food awaits! </h1>
-        <p class="lead">Where the grill is always hot, and the drinks are always cold!! IF YOU THIS THEN THE GITHUB ACTION INVOCATION WORKS</p>
+        <p class="lead">Where the grill is always hot, and the drinks are always cold!! IF YOU THIS THEN THE GITHUB ACTION INVOCATION WORKS, yes its working</p>
     </div>
 
     <!-- Main Content Section -->
