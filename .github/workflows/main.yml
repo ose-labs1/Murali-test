@@ -53,5 +53,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger Jenkins
-      run: curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" \
-          --user ${{ secrets.JUSER }}:${{ secrets.UTOKEN }}
+      run: curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" --user ${{ secrets.JUSER }}:${{ secrets.UTOKEN }}
