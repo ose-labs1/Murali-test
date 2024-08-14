@@ -3,7 +3,7 @@ on: push
 
 env:
   JENKINS_HOST: http://139.162.253.204:8080/ ## jenkins base url
-  JENKINS_JOB: job/EndCourseProject/build ## builds the HelloWorld job inside testJobs
+  JENKINS_JOB: job/EndCourseProject ## builds the HelloWorld job inside testJobs
   JENKINS_PARAMS: no
 
 jobs:
