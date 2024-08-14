@@ -56,22 +56,48 @@
 #       run: curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" --user ${{ secrets.JUSER }}:${{ secrets.UTOKEN }}
 
 
-name: Trigger Jenkins Job
+# name: Trigger Jenkins Job
 
+# on:
+#   push:
+#     branches:
+#       - main  # Change this to the branch you want to trigger the action on
+
+# jobs:
+#   trigger-jenkins:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Trigger Jenkins Job
+#       run: |
+#         curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" \
+#           --user "${{ secrets.JUSER }}:${{ secrets.UTOKEN }}" \
+#           --data-urlencode "BRANCH=main" \
+#           --data-urlencode "DEPLOY_ENV=staging" \
+#           --data-urlencode "RUN_TESTS=true"
+
+
+name: jenkins-CI
+
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches:
-      - main  # Change this to the branch you want to trigger the action on
+    branches: [ main ]
 
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  trigger-jenkins:
+  # This workflow contains a single job called "build"
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-    - name: Trigger Jenkins Job
-      run: |
-        curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" \
-          --user "${{ secrets.JUSER }}:${{ secrets.UTOKEN }}" \
-          --data-urlencode "BRANCH=main" \
-          --data-urlencode "DEPLOY_ENV=staging" \
-          --data-urlencode "RUN_TESTS=true"
+      - name: Trigger jenkins job
+        uses: joshlk/jenkins-githubaction@master
+        with:
+          url: "http://139.162.253.204:8080"
+          job_name: job/EndCourseProject/build
+          username: ${{ secrets.JUSER }}
+          api_token: ${{ secrets.UTOKEN }}
+          timeout: "1000"
