@@ -18,8 +18,8 @@ jobs:
         with:
           url: http://139.162.253.204:8080
           job_name: EndCourseProject
-          username: ${{ secrets.JUSER }}
-          api_token: ${{ secrets.UTOKEN }}
+          username: ${{ secrets.UNAME }}
+          api_token: ${{ secrets.MYTOKEN }}
           timeout: "1000"
 
 # name: Trigger Jenkins Pipeline
