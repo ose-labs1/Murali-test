@@ -1,3 +1,106 @@
+name: jenkins-CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger jenkins job
+        uses: joshlk/jenkins-githubaction@master
+        with:
+          url: http://139.162.253.204:8080
+          job_name: EndCourseProject
+          username: ${{ secrets.UNAME }}
+          api_token: ${{ secrets.MYTOKEN }}
+          timeout: "1000"
+
+# name: Trigger Jenkins Pipeline
+# on: push
+
+# env:
+#   JENKINS_HOSTS: http://139.162.253.204:8080/ ## jenkins base url
+#   #JENKINS_JOBS:  ## builds the HelloWorld job inside testJobs
+#   #JENKINS_PARAM: no
+
+# jobs:
+#   launch_jenkins_job:
+#     name: trigger jenkins job
+#     runs-on: ubuntu-latest
+#     steps:
+#       -
+#         name: Trigger Jenkins Job
+#         uses: sbitio/trigger-jenkins-job@master
+#         with:
+#           JENKINS_USER: ${{ secrets.JUSER }}
+#           JENKINS_TOKEN: ${{ secrets.UTOKEN }}
+#           JENKINS_HOST: ${{ env.JENKINS_HOSTS }}
+#           JENKINS_JOB: job/EndCourseProject
+#           #JENKINS_PARAMS: ${{ env.JENKINS_PARAM }}
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   trigger-jenkins:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Trigger Jenkins
+#       uses: appleboy/jenkins-action@master
+#       with:
+#         url: "http://139.162.253.204:8080/"
+#         user: ${{ secrets.JUSER }}
+#         token: ${{ secrets.UTOKEN }}
+#         job: "EndCourseProject"
+
+# on: push
+
+# jobs:
+#   launch_jenkins_job:
+#     name: trigger jenkins job
+#     runs-on: ubuntu-latest
+#     steps:
+#       -
+#         name: Trigger Jenkins Job
+#         uses: sbitio/trigger-jenkins-job@master
+#         with:
+#           JENKINS_USER: ${{ secrets.JUSER }}
+#           JENKINS_TOKEN: ${{ secrets.UTOKEN }}
+#           JENKINS_HOST: "http://139.162.253.204:8080"
+#           JENKINS_JOB: job/EndCourseProject/build
+
+
+# on: push
+
+# env:
+#   JENKINS_HOST: http://139.162.253.204:8080 ## jenkins base url
+#   JENKINS_JOB: job/EndCourseProject ## builds the HelloWorld job inside testJobs
+#   JENKINS_PARAMS: no
+
+# jobs:
+#   launch_jenkins_job:
+#     name: trigger jenkins job
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Trigger Jenkins Job
+#         uses: sbitio/trigger-jenkins-job@master
+#         with:
+#           JENKINS_USER: ${{ secrets.JUSER }}
+#           JENKINS_TOKEN: ${{ secrets.UTOKEN }}
+#           JENKINS_HOST: ${{ env.JENKINS_HOST }}
+#           JENKINS_JOB: ${{ env.JENKINS_JOB }}
+#           JENKINS_PARAMS: ${{ env.JENKINS_PARAMS }}
+
+
+
 # name: Trigger Jenkins Pipeline
 
 # on:
@@ -10,28 +113,51 @@
 #     runs-on: ubuntu-latest
 #     steps:
 #     - name: Trigger Jenkins
-#       uses: appleboy/jenkins-action@v1.2.0
-#       with:
-#         url: "http://139.162.253.204:8080//"
-#         user: ${{ secrets.JUSER }}
-#         token: ${{ secrets.UTOKEN }}
+#       run: curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" --user ${{ secrets.JUSER }}:${{ secrets.UTOKEN }}
 
 
+# name: Trigger Jenkins Job
 
-on: push
+# on:
+#   push:
+#     branches:
+#       - main  # Change this to the branch you want to trigger the action on
 
-env:
-  JENKINS_HOST: http://139.162.253.204:8080/ ## jenkins base url
-  JENKINS_JOB: job/EndCourseProject ## builds the HelloWorld job inside testJobs
-  JENKINS_PARAMS: no
+# jobs:
+#   trigger-jenkins:
+#     runs-on: ubuntu-latest
 
-jobs:
-  launch_jenkins_job:
-    name: trigger jenkins job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Jenkins Job
-        uses: sbitio/trigger-jenkins-job@master
-        with:
-          user: ${{ secrets.JUSER }}
-          token: ${{ secrets.UTOKEN }}
+#     steps:
+#     - name: Trigger Jenkins Job
+#       run: |
+#         curl -X POST "http://139.162.253.204:8080/job/EndCourseProject/build" \
+#           --user "${{ secrets.JUSER }}:${{ secrets.UTOKEN }}" \
+#           --data-urlencode "BRANCH=main" \
+#           --data-urlencode "DEPLOY_ENV=staging" \
+#           --data-urlencode "RUN_TESTS=true"
+
+
+# name: jenkins-CI
+
+# # Controls when the workflow will run
+# on:
+#   # Triggers the workflow on push or pull request events but only for the main branch
+#   push:
+#     branches: [ main ]
+
+
+# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# jobs:
+#   # This workflow contains a single job called "build"
+#   build:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Trigger jenkins job
+#         uses: joshlk/jenkins-githubaction@master
+#         with:
+#           url: "http://139.162.253.204:8080"
+#           job_name: job/EndCourseProject/build
+#           username: ${{ secrets.JUSER }}
+#           api_token: ${{ secrets.UTOKEN }}
+#           timeout: "1000"
