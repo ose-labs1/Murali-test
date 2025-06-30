@@ -1,0 +1,7 @@
+- name: user creation
+  hosts: dev
+  tasks:
+     - name: user create
+       ansible.builtin.user:
+          name: user800
+          state: present
