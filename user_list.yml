@@ -1,0 +1,11 @@
+users:
+  - name: raja
+    id: 1005
+    first: shan
+    middle: kara
+    last: muga
+  - name: murali
+    id: 1006
+    first: kanda
+    middle: tharan
+    last: shan

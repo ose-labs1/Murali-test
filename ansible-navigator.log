@@ -1,0 +1,11 @@
+2025-06-30T08:31:25.945728+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2025-06-30T08:31:26.321220+00:00 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+2025-06-30T08:31:46.529255+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2025-06-30T08:31:48.692910+00:00 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+2025-06-30T08:32:14.779281+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2025-06-30T08:32:16.230158+00:00 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+2025-06-30T08:32:21.341292+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2025-06-30T08:32:42.181112+00:00 CRITICAL 'ansible_navigator.actions.run_playbook._handle_message' Unhandled message from runner queue, discarded: {'event': 'verbose', 'uuid': '7a8698cb-c8b9-4e69-80a8-8890c01b1613', 'counter': 1, 'stdout': '', 'start_line': 0, 'end_line': 1, 'runner_ident': 'cc9db093-e84c-47d5-a6c3-930b3a7fba9e', 'created': '2025-06-30T08:32:42.175923'}
+2025-06-30T08:32:42.181610+00:00 CRITICAL 'ansible_navigator.actions.run_playbook._handle_message' Unhandled message from runner queue, discarded: {'event': 'verbose', 'uuid': 'de863f0b-55d2-4d6d-abb0-08e8878a4ac9', 'counter': 2, 'stdout': 'playbook: /home/student/usercreation/complex_user.yml', 'start_line': 1, 'end_line': 2, 'runner_ident': 'cc9db093-e84c-47d5-a6c3-930b3a7fba9e', 'created': '2025-06-30T08:32:42.176340'}
+2025-06-30T09:25:28.161366+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2025-06-30T09:25:29.843275+00:00 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed

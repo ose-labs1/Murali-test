@@ -1,0 +1,15 @@
+- name: user creation
+  hosts: dev
+  vars_files:
+    - user_list.yml
+  tasks:
+    - name: user creation
+      vars:
+        password: "{{ lookup ('password', ('password-') + item.name) }}"
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        uid: "{{ item.id }}"
+        password: "{{ password | password_hash('sha512') }}"
+        comment: "{{ item.first | capitalize +' '+ item.middle | capitalize +' '+ item.last|capitalize }}"
+      loop: "{{ users }}"
+
